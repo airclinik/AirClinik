@@ -1,17 +1,47 @@
+import { useState } from "react";
+import { Navigation } from "@/components/Navigation";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { PortfolioSection } from "@/components/PortfolioSection";
+import { BookingSection } from "@/components/BookingSection";
+import { Footer } from "@/components/Footer";
+
 const Index = () => {
+  const [language, setLanguage] = useState<"en" | "pt">("en");
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === "en" ? "pt" : "en"));
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Account for fixed navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background">
-      <div className="container px-4">
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            Ready to Build
-          </h1>
-          <p className="text-lg text-muted-foreground sm:text-xl">
-            Your clean React project is set up and ready. Start building something amazing.
-          </p>
-        </div>
-      </div>
-    </main>
+    <div className="min-h-screen">
+      <Navigation
+        language={language}
+        onLanguageToggle={toggleLanguage}
+        onNavigate={scrollToSection}
+      />
+      <HeroSection language={language} onNavigate={scrollToSection} />
+      <AboutSection language={language} />
+      <ServicesSection language={language} />
+      <PortfolioSection language={language} />
+      <BookingSection language={language} />
+      <Footer language={language} />
+    </div>
   );
 };
 

@@ -1,0 +1,24 @@
+# Este ficheiro resolve todos os problemas de deploy do Vite na Netlify.
+
+[build]
+  # 1. Comando de Build: Diz à Netlify para usar o teu script "build"
+  #    (que no teu package.json é "tsc && vite build")
+  command = "npm run build"
+
+  # 2. Diretório de Publicação: Diz à Netlify que o site final está na pasta "dist".
+  #    Este é o erro mais comum.
+  publish = "dist"
+
+[context.production.environment]
+  # 3. Versão do Node: Força a Netlify a usar o Node.js 18,
+  #    necessário para o Vite 5.
+  NODE_VERSION = "18"
+
+[[redirects]]
+  # 4. Regra de SPA (Single Page Application):
+  #    Isto é essencial para o React. Garante que se o utilizador
+  #    for diretamente para "airclinik.com/services", o site não dá
+  #    erro 404 e carrega o React corretamente.
+  from = "/*"
+  to = "/index.html"
+  status = 200
