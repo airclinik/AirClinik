@@ -14,8 +14,8 @@ const FAQ = ({ language }: FAQProps) => {
   const faqs = [
     {
       question: {
-        en: "Do you offer mobile services?",
-        pt: "Oferecem serviços móveis?",
+        en: "Does AirClinik offer mobile services?",
+        pt: "A AirClinik oferece serviços móveis?",
       },
       answer: {
         en: "Yes, we travel to most aerodromes in the country.",
