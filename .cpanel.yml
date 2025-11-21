@@ -1,0 +1,21 @@
+
+# Ficheiro de Configuração de Deploy para cPanel (Guarde como .cpanel.yml)
+# Otimizado para projetos Vite/React/Bun
+deployment:
+  tasks:
+    # 1. Define o caminho de destino (Username: airclini)
+    - export DEPLOYPATH=/home/airclini/public_html/
+    
+    # 2. Executa os passos de Build
+    #    -> Instala as dependências (usando 'bun' em vez de 'npm')
+    - /usr/local/bin/bun install
+    #    -> Executa o comando de build (cria a pasta 'dist')
+    - /usr/local/bin/bun run build
+    
+    # 3. Copia o Conteúdo da Pasta 'dist' para public_html
+    #    -> O comando copia o CONTEÚDO da pasta 'dist', e não a pasta 'dist' em si.
+    - /bin/cp -R dist/. $DEPLOYPATH
+    
+    # Nota Importante:
+    # O cPanel precisa que o ambiente Node.js/Bun esteja configurado
+    # na interface "Setup Node.js App" antes de executar estes comandos.
