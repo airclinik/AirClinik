@@ -24,6 +24,16 @@ const FAQ = ({ language }: FAQProps) => {
     },
     {
       question: {
+        en: "How far in advance should I book?",
+        pt: "Com quanto tempo de antecedência devo reservar?",
+      },
+      answer: {
+        en: "We recommend booking at least 48-72 hours in advance to ensure crew availability, especially for full details.",
+        pt: "Recomendamos reservar com pelo menos 48-72 horas de antecedência para garantir disponibilidade da equipa, especialmente para detalhes completos.",
+      },
+    },
+    {
+      question: {
         en: "How long does a full detail take?",
         pt: "Quanto tempo demora um detailing completo?",
       },
@@ -34,22 +44,52 @@ const FAQ = ({ language }: FAQProps) => {
     },
     {
       question: {
-        en: "Do you need water/power?",
-        pt: "Precisam de água/eletricidade?",
-      },
-      answer: {
-        en: "Ideally yes, but we have autonomous solutions if notified.",
-        pt: "Idealmente sim, mas temos soluções autónomas se avisados previamente.",
-      },
-    },
-    {
-      question: {
         en: "Are products aviation approved?",
         pt: "Os produtos são aprovados para aviação?",
       },
       answer: {
         en: "Yes, we only use Boeing/Airbus spec products.",
         pt: "Sim, usamos apenas produtos com especificação Boeing/Airbus.",
+      },
+    },
+    {
+      question: {
+        en: "What is 'Brightwork' polishing?",
+        pt: "O que é o polimento 'Brightwork'?",
+      },
+      answer: {
+        en: "It is a specialized process to restore bare metal surfaces (like leading edges and engine inlets) to a mirror-like finish, removing oxidation.",
+        pt: "É um processo especializado para restaurar superfícies metálicas expostas (como bordos de ataque e entradas de motor) a um acabamento espelhado, removendo oxidação.",
+      },
+    },
+    {
+      question: {
+        en: "Do you treat leather interiors?",
+        pt: "Tratam interiores em pele?",
+      },
+      answer: {
+        en: "Yes. We use aviation-grade pH-balanced conditioners that clean and hydrate leather without affecting its fire-retardant properties.",
+        pt: "Sim. Usamos condicionadores de grau aeronáutico com pH equilibrado que limpam e hidratam a pele sem afetar as suas propriedades retardadoras de fogo.",
+      },
+    },
+    {
+      question: {
+        en: "Does Ceramic Coating add weight?",
+        pt: "O revestimento cerâmico adiciona peso?",
+      },
+      answer: {
+        en: "No. Unlike heavy wax layers, ceramic coating bonds at a molecular level and is microns thin, providing protection without weight penalty.",
+        pt: "Não. Ao contrário de camadas de cera pesadas, o revestimento cerâmico liga-se a nível molecular e tem apenas microns de espessura, proporcionando proteção sem penalização de peso.",
+      },
+    },
+    {
+      question: {
+        en: "Do you need water/power?",
+        pt: "Precisam de água/eletricidade?",
+      },
+      answer: {
+        en: "Ideally yes, but we have autonomous solutions if notified.",
+        pt: "Idealmente sim, mas temos soluções autónomas se avisados previamente.",
       },
     },
   ];
