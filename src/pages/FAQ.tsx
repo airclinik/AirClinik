@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +13,18 @@ interface FAQProps {
 }
 
 const FAQ = ({ language }: FAQProps) => {
+  const navigate = useNavigate();
+
+  const handleBookNowClick = () => {
+    navigate("/");
+    setTimeout(() => {
+      const bookingSection = document.getElementById("booking");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   const faqs = [
     {
       question: {
@@ -133,10 +145,8 @@ const FAQ = ({ language }: FAQProps) => {
                 ? "Ready to schedule your aircraft detail?"
                 : "Pronto para agendar o seu detailing de aeronave?"}
             </p>
-            <Button asChild size="lg">
-              <Link to="/#booking">
-                {language === "en" ? "Book Now" : "Agendar Agora"}
-              </Link>
+            <Button size="lg" onClick={handleBookNowClick}>
+              {language === "en" ? "Book Now" : "Agendar Agora"}
             </Button>
           </div>
         </motion.div>
