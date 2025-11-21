@@ -27,11 +27,11 @@ const Safety = ({ language }: SafetyProps) => {
       icon: ShieldCheck,
       title: {
         en: "Fully Insured",
-        pt: "Totalmente Segurado",
+        pt: "Totalmente Assegurado",
       },
       description: {
         en: "Comprehensive liability insurance covering all operations. Your aircraft is protected throughout our service process.",
-        pt: "Seguro de responsabilidade abrangente cobrindo todas as operações. Sua aeronave está protegida durante todo o nosso processo de serviço.",
+        pt: "Seguro de responsabilidade abrangente cobrindo todas as operações. A sua aeronave está protegida durante todo o nosso processo de serviço.",
       },
     },
     {
@@ -42,7 +42,7 @@ const Safety = ({ language }: SafetyProps) => {
       },
       description: {
         en: "Specialized training in aviation substrates. Our team understands the unique requirements of aircraft detailing and maintenance.",
-        pt: "Treinamento especializado em substratos de aviação. Nossa equipe compreende os requisitos únicos de detailing e manutenção de aeronaves.",
+        pt: "Treino especializado em substratos de aviação. A nossa equipe compreende os requisitos únicos de detailing e manutenção de aeronaves.",
       },
     },
     {
@@ -53,7 +53,7 @@ const Safety = ({ language }: SafetyProps) => {
       },
       description: {
         en: "Every service is performed to the highest standards. We stand behind our work with complete satisfaction guarantee.",
-        pt: "Cada serviço é realizado com os mais altos padrões. Garantimos a satisfação completa com nosso trabalho.",
+        pt: "Cada serviço é realizado com os mais altos padrões. Garantimos a satisfação completa com o nosso trabalho.",
       },
     },
   ];
@@ -73,7 +73,7 @@ const Safety = ({ language }: SafetyProps) => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === "en"
               ? "Your aircraft deserves the highest level of care and protection"
-              : "Sua aeronave merece o mais alto nível de cuidado e proteção"}
+              : "A sua aeronave merece o mais alto nível de cuidado e proteção"}
           </p>
         </motion.div>
 
@@ -113,8 +113,8 @@ const Safety = ({ language }: SafetyProps) => {
             </h3>
             <p className="text-muted-foreground leading-relaxed">
               {language === "en"
-                ? "At AirClinik, safety and quality are not just priorities—they're fundamental to everything we do. We maintain the highest industry standards to ensure your aircraft receives premium care while protecting your investment."
-                : "Na AirClinik, segurança e qualidade não são apenas prioridades—são fundamentais em tudo o que fazemos. Mantemos os mais altos padrões da indústria para garantir que sua aeronave receba cuidados premium enquanto protegemos seu investimento."}
+                ? "At AirClinik, safety and quality are not just priorities, they're fundamental to everything we do. We maintain the highest industry standards to ensure your aircraft receives premium care while protecting your asset."
+                : "Na AirClinik, segurança e qualidade não são apenas prioridades, são fundamentais em tudo o que fazemos. Mantemos os mais altos padrões da indústria para garantir que a sua aeronave receba cuidados premium enquanto protegemos o seu investimento."}
             </p>
           </div>
         </motion.div>
