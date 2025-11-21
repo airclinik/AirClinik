@@ -1,24 +1,45 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Globe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/airclinik-logo.jpg";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavigationProps {
   language: "en" | "pt";
   onLanguageToggle: () => void;
-  onNavigate: (section: string) => void;
+  onNavigate?: (section: string) => void;
 }
 
 export const Navigation = ({ language, onLanguageToggle, onNavigate }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { en: "Home", pt: "Início", id: "home" },
-    { en: "Services", pt: "Serviços", id: "services" },
-    { en: "About", pt: "Sobre", id: "about" },
-    { en: "Portfolio", pt: "Portfólio", id: "portfolio" },
+    { en: "Home", pt: "Início", path: "/", scrollTo: "home" },
+    { en: "Services", pt: "Serviços", path: "/", scrollTo: "services" },
+    { en: "Safety", pt: "Segurança", path: "/safety" },
+    { en: "FAQ", pt: "FAQ", path: "/faq" },
   ];
+
+  const handleNavClick = (path: string, scrollTo?: string) => {
+    if (path === "/" && scrollTo && onNavigate) {
+      if (location.pathname === "/") {
+        onNavigate(scrollTo);
+      } else {
+        window.location.href = `/#${scrollTo}`;
+      }
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleBookClick = () => {
+    if (location.pathname === "/" && onNavigate) {
+      onNavigate("booking");
+    } else {
+      window.location.href = "/#booking";
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -29,26 +50,37 @@ export const Navigation = ({ language, onLanguageToggle, onNavigate }: Navigatio
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            onClick={() => onNavigate("home")}
-            className="flex items-center"
-          >
-            <span className="text-2xl font-bold text-foreground">AirClinik</span>
-          </motion.button>
+          <Link to="/">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center"
+            >
+              <span className="text-2xl font-bold text-foreground">AirClinik</span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                {language === "en" ? item.en : item.pt}
-              </button>
+            {navItems.map((item, index) => (
+              item.path === "/" && item.scrollTo ? (
+                <button
+                  key={index}
+                  onClick={() => handleNavClick(item.path, item.scrollTo)}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  {language === "en" ? item.en : item.pt}
+                </button>
+              ) : (
+                <Link
+                  key={index}
+                  to={item.path}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  {language === "en" ? item.en : item.pt}
+                </Link>
+              )
             ))}
           </div>
 
@@ -65,7 +97,7 @@ export const Navigation = ({ language, onLanguageToggle, onNavigate }: Navigatio
             </Button>
             
             <Button
-              onClick={() => onNavigate("booking")}
+              onClick={handleBookClick}
               className="hidden md:inline-flex bg-primary hover:bg-primary/90"
             >
               {language === "en" ? "Book Service" : "Agendar"}
@@ -93,23 +125,28 @@ export const Navigation = ({ language, onLanguageToggle, onNavigate }: Navigatio
               className="md:hidden pt-4 pb-2"
             >
               <div className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      onNavigate(item.id);
-                      setMobileMenuOpen(false);
-                    }}
-                    className="text-left text-foreground hover:text-primary transition-colors py-2"
-                  >
-                    {language === "en" ? item.en : item.pt}
-                  </button>
+                {navItems.map((item, index) => (
+                  item.path === "/" && item.scrollTo ? (
+                    <button
+                      key={index}
+                      onClick={() => handleNavClick(item.path, item.scrollTo)}
+                      className="text-left text-foreground hover:text-primary transition-colors py-2"
+                    >
+                      {language === "en" ? item.en : item.pt}
+                    </button>
+                  ) : (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-left text-foreground hover:text-primary transition-colors py-2"
+                    >
+                      {language === "en" ? item.en : item.pt}
+                    </Link>
+                  )
                 ))}
                 <Button
-                  onClick={() => {
-                    onNavigate("booking");
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={handleBookClick}
                   className="bg-primary hover:bg-primary/90 w-full"
                 >
                   {language === "en" ? "Book Service" : "Agendar"}
