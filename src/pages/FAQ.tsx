@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 interface FAQProps {
   language: "en" | "pt";
@@ -124,6 +126,19 @@ const FAQ = ({ language }: FAQProps) => {
               </AccordionItem>
             ))}
           </Accordion>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-6">
+              {language === "en"
+                ? "Ready to schedule your aircraft detail?"
+                : "Pronto para agendar o seu detailing de aeronave?"}
+            </p>
+            <Button asChild size="lg">
+              <Link to="/#booking">
+                {language === "en" ? "Book Now" : "Agendar Agora"}
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </div>
